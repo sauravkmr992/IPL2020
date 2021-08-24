@@ -28,7 +28,7 @@ Data has been scraped out from [ESPN cricinfo](https://www.espncricinfo.com/seri
 	       4. Reload the page again to see all the requests. You may find the request I have used to scrape the content.
 	       5. Request looks like this (https://hs-consumer-api.espncricinfo.com/v1/pages/match/scorecard?lang=en&seriesId=1210595&matchId=1237181).
 	       
-	
+
 	Analysis
 	
 	- Analysis is done on the data through pandas and seaborn library to find meaningful information or the pattern if any.
