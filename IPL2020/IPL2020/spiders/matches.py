@@ -11,7 +11,7 @@ class MatchidSpider(scrapy.Spider):
 
 
     '''In "parse" func below I'm parsing the response received from the request sent to "start_urls". Json Reponse contains ids for all the matches
-        played in the IPL 2020. "Parse" func is sending request to web pages using these ids and then response is forwarded to the "parse1" func to
+        played in the IPL 2020. "Parse" func is sending request to web pages using these ids and then response is forwarded to the "parseid" func to
         yeild details for both the innings played in that match.
     '''
 
@@ -19,10 +19,10 @@ class MatchidSpider(scrapy.Spider):
        dict=json.loads(response.body)
        count=0
        for x in dict.get('content').get('matches'):             #looping through matchid's
-           yield scrapy.Request(url=f"https://hs-consumer-api.espncricinfo.com/v1/pages/match/scorecard?lang=en&seriesId=1210595&matchId={x.get('objectId')}",callback=self.parse1)
+           yield scrapy.Request(url=f"https://hs-consumer-api.espncricinfo.com/v1/pages/match/scorecard?lang=en&seriesId=1210595&matchId={x.get('objectId')}",callback=self.parseid)
     
     
-    def parse1(self,response):
+    def parseid(self,response):
         dict=json.loads(response.body)
         x=dict.get('content').get('notes').get('groups')
         
